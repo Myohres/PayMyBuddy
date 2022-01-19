@@ -1,0 +1,13 @@
+<div class="Authentification-aera">
+  <p>Authentification</p>
+  <p>Login</p>
+  <input (keyup)="loginOnKey($event)" type="text" minlength="10px" maxlength="50px" size="12" >
+  <p> Password</p>
+  <input (keyup)=" passWordOnKey($event)" type="password" minlength="10px" maxlength="50px" size="12" >
+  <p>
+    <a [routerLink]="[link]">
+      <button type="button" (click)="authentication(login,password);">submit</button>
+    </a>
+  </p>
+  <p>{{message}}</p>
+</div>
