@@ -1,30 +1,35 @@
 import {Injectable} from "@angular/core";
 import {User} from "../model/user";
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable} from "rxjs";
+import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn:"root"
 })
 export class UserService {
 
-  private readonly USER_API_URL = 'jdbc:mysql://localhost:3306/paymybuddy?useTimezone=true&serverTimezone=UTC';
 
-  constructor(private http: HttpClient) {
+  private rootURL: string = "http://localhost:8080/users/";
+  private userId: number = 0;
+
+
+  constructor( private http: HttpClient) {
   }
 
-
-  getAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.USER_API_URL);
-
+  public getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.rootURL);
   }
-/*
-  getUserByEmail(email: string): User {
-    const user = this.users.find(user => user.email === email)
-    if (user) {
-      return user ;
-    } else {
-      throw  new Error('User with email ' + email +' not found');
-    }
-  }*/
+
+  public getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(this.rootURL+email);
+  }
+
+  getUserId() {
+    return this.userId;
+  }
+
+  setUserId(id: number) {
+    this.userId = id;
+  }
 }

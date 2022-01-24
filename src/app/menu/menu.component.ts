@@ -8,9 +8,12 @@ import {UserService} from "../service/user.service";
 })
 export class MenuComponent implements OnInit{
 
-  userService: UserService = new UserService()
+  public userId: number = 0;
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
-
+    this.userId = this.userService.getUserId();
   }
 }
