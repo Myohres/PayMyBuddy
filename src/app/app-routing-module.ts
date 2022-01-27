@@ -8,8 +8,11 @@ import {MenuComponent} from "./menu/menu.component";
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
-  { path:'menu', component: MenuComponent }
-
+  { path:'Home', component: MenuComponent },
+  { path:'Transfer', component: MenuComponent },
+  { path:'Profile', component: MenuComponent },
+  { path:'Contact', component: MenuComponent },
+  { path:'LogOff', component: MenuComponent }
 ];
 
 @NgModule({
