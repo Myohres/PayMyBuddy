@@ -7,6 +7,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthenticationComponent} from "./authentication/authentication.component";
 import {AppRoutingModule} from "./app-routing-module";
 import {MenuComponent} from "./menu/menu.component";
+import { SubscriptionComponent } from './subscription/subscription.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import {MenuComponent} from "./menu/menu.component";
     AppComponent,
     AuthenticationComponent,
     MenuComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    SubscriptionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

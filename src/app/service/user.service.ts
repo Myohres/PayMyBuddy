@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {User} from "../model/user";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {first, Observable} from "rxjs";
 
 
 @Injectable({
@@ -23,6 +23,15 @@ export class UserService {
 
   public getUserByEmail(email: string): Observable<User> {
     return this.http.get<User>(this.rootURL+email);
+  }
+
+  public userInDb(email: string): Observable<boolean> {
+    return this.http.get<boolean>(this.rootURL +"/free/"+email);
+  }
+
+
+  public addUser(user: User){
+   return  this.http.post<User>(this.rootURL,user);
   }
 
   getUserId() {

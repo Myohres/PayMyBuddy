@@ -1,0 +1,19 @@
+<div class="sub-area">
+  <p>Pay my buddy</p>
+  <p>Subscription</p>
+
+  <!--<p>Firstname</p>
+  <input [formControl]="firstname">
+  <p> LastName</p>
+  <input [formControl]="lastname">-->
+  <p>Email</p>
+  <input [formControl]="email">
+  <p> Password</p>
+  <input [formControl]="password1">
+ <!-- <p>Confirm password</p>
+  <input [formControl]="password2">-->
+  <p>
+    <button type="button" (click)="subscription(email.value);">Submit</button>
+  </p>
+  <p>{{message}}</p>
+</div>
