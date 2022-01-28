@@ -8,7 +8,7 @@ import {MenuComponent} from "./menu/menu.component";
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
-  { path:'menu', component: MenuComponent }
+  { path:'home', component: MenuComponent }
 
 ];
 
@@ -20,5 +20,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule{}
-
+export class AppRoutingModule{ }

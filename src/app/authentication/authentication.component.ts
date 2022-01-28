@@ -37,7 +37,7 @@ export class AuthenticationComponent implements OnInit {
           console.log("password : ", password);
           if (data.password == password){
             this.userService.setUserId(data.id);
-            this.router.navigate(['/menu']);
+            this.router.navigate(['/home']);
           } else
             this.message = "login or Password wrong";
           this.login = '';
