@@ -9,11 +9,11 @@
   <p>Email</p>
   <input [formControl]="email">
   <p> Password</p>
-  <input [formControl]="password1">
+  <input [formControl]="password">
  <!-- <p>Confirm password</p>
   <input [formControl]="password2">-->
   <p>
-    <button type="button" (click)="subscription(email.value);">Submit</button>
+    <button type="button" (click)="subscription();">Submit</button>
   </p>
   <p>{{message}}</p>
 </div>

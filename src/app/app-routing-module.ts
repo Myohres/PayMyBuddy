@@ -9,10 +9,8 @@ import {SubscriptionComponent} from "./subscription/subscription.component";
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
-  { path:'menu', component: MenuComponent },
+  { path:'home', component: MenuComponent },
   { path:'subscription', component: SubscriptionComponent }
-
-
 ];
 
 @NgModule({

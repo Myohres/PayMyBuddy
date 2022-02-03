@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../model/user";
 import {FormControl} from "@angular/forms";
 import {UserService} from "../service/user.service";
-import {Observable} from "rxjs";
+import {catchError, first, Observable} from "rxjs";
 
 @Component({
   selector: 'app-subscription',
@@ -18,46 +18,42 @@ export class SubscriptionComponent implements OnInit {
   firstname: FormControl = new FormControl();
   lastname: FormControl = new FormControl();
   email: FormControl = new FormControl();
-  password1: FormControl = new FormControl();
-  password2: FormControl = new FormControl();
+  password: FormControl = new FormControl();
+  booleanEssai!: boolean;
   message: string = '';
-  emailTaken: Observable<boolean> = new Observable<boolean>();
 
   userTmp: User = {
+    id:0,
     email: "",
-    id: 0,
     password: ""
   };
-  userTmp2!: Observable<User>;
-
-
 
   ngOnInit(): void {
 
   }
 
-  public passwordSame(password1: string, password2: string) {
-    if (this.password1 != this.password2 ) {
-      this.message = "password are not same ";
+  public loginNotNull(): boolean{
+    if (this.email.value != null && this.password.value != null) {
+      return true;
+    } else {
+      this.message = "email or password cant be null";
+      return false;
     }
   }
 
-  public subscription(email: string) {
-    /*recuperer les infos tapé*/
-    this.userTmp.email= this.email.value;
-    this.userTmp.password = this.password1.value;
 
-
-    this.emailTaken = this.userService.userInDb(this.email.value).pipe()
-    if ( !this.emailTaken) {
-      this.message =" etape 4 : email already exist" +this.userTmp ;
-    } else if (this.emailTaken){
-      this.message =" etape 5 : email free"
-        +" " +this.userTmp2
-        +" " +this.userTmp.email
-        +" " +this.emailTaken;
-      this.userService.addUser(this.userTmp);
+  public subscription() {
+    this.message = "";
+    console.log("login not null : " +this.loginNotNull())
+    if (this.loginNotNull()){
+      this.userTmp.email = this.email.value;
+      this.userTmp.password = this.password.value;
+      console.log(this.userTmp.email);
+      console.log(this.userTmp.password)
+      this.userService.register(this.email.value, this.userTmp)
     }
-
+    this.email.reset();
+    this.password.reset();
   }
+
 }
