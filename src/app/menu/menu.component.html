@@ -1,15 +1,28 @@
-<div class="menu">
-  <div class="logo">Pay my buddy</div>
-  <table class="menu_tab" >
-    <tr>
-      <th><a [routerLink]="['/Home']">Home</a></th>
-      <th><a [routerLink]="['/Transfer']">Transfer</a></th>
-      <th><a [routerLink]="['/Profile']">Profile</a></th>
-      <th><a [routerLink]="['/Contact']">Contact</a></th>
-      <th><a [routerLink]="['']">Log off</a></th>
-    <tr>
-  </table>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="justify-content-left">
+    <a class="navbar-brand" href="#">Pay my buddy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
 
-</div>
-
-<p>Bonjour utilisateur n° {{userId}}</p>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Home">Transfer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log Off</a>
+        </li>
+      </ul>
+    </div>
+</nav>
