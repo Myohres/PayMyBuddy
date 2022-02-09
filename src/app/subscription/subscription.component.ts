@@ -19,7 +19,6 @@ export class SubscriptionComponent implements OnInit {
   lastname: FormControl = new FormControl();
   email: FormControl = new FormControl();
   password: FormControl = new FormControl();
-  booleanEssai!: boolean;
   message: string = '';
 
   userTmp: User = {
@@ -40,7 +39,6 @@ export class SubscriptionComponent implements OnInit {
       return false;
     }
   }
-
 
   public subscription() {
     this.message = "";
