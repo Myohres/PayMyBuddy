@@ -7,6 +7,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthenticationComponent} from "./authentication/authentication.component";
 import {AppRoutingModule} from "./app-routing-module";
 import {MenuComponent} from "./menu/menu.component";
+import { TransactionComponent } from './transaction/transaction.component';
+
+
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -14,12 +19,19 @@ import {MenuComponent} from "./menu/menu.component";
     AppComponent,
     AuthenticationComponent,
     MenuComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    MatTableModule,
+
+    MatTableModule,
+    MatPaginatorModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
