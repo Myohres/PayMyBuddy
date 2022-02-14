@@ -24,4 +24,5 @@ export class TransactionService {
   public getTransactionsByEmail(email: string): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.rootURL + email)
   }
+
 }
