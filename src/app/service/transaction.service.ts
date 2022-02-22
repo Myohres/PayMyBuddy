@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {User} from "../model/user";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Transaction} from "../model/transaction";
@@ -21,8 +20,8 @@ export class TransactionService {
     return this.http.get<Transaction[]>(this.rootURL);
   }
 
-  public getTransactionsByEmail(email: string): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.rootURL + email)
+  public getTransactionsById(id: number): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.rootURL}/${id}`)
   }
 
 }
