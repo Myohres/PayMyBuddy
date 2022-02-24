@@ -10,8 +10,11 @@ import {Observable} from "rxjs";
 export class UserService {
 
 
+
   private rootURL: string = "http://localhost:8080/users/";
-  private userId: number = 0;
+  private userId: number = 1;
+  private userLastName: string = "";
+  private userFirstName: string = "";
 
 
   constructor( private http: HttpClient) {
@@ -31,5 +34,21 @@ export class UserService {
 
   setUserId(id: number) {
     this.userId = id;
+  }
+
+  getUserLastName(): string {
+    return this.userLastName;
+  }
+
+  setUserLastName(value: string) {
+    this.userLastName = value;
+  }
+
+  getUserFirstName(): string {
+    return this.userFirstName;
+  }
+
+  setUserFirstName(value: string) {
+    this.userFirstName = value;
   }
 }

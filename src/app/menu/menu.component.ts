@@ -10,12 +10,16 @@ import {Router} from "@angular/router";
 export class MenuComponent implements OnInit{
 
   public userId: number = 0;
+  public userLastName: string = "";
+  public userFirstName: string = "";
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
     this.userId = this.userService.getUserId();
+    this.userLastName = this.userService.getUserLastName();
+    this.userFirstName = this.userService.getUserFirstName();
   }
 }
 

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Transaction} from "../model/transaction";
 import {UserService} from "../service/user.service";
-import {User} from "../model/user";
 import {TransactionService} from "../service/transaction.service";
-import {Observable} from "rxjs";
 import {ContactService} from "../service/contact.service";
 import {Contact} from "../model/contact";
 
@@ -17,7 +15,7 @@ export class TransactionComponent implements OnInit {
 
   public empData: Transaction[] = [];
   public contactData: Contact[] = [];
-  public userLogin: number = 4;
+  public userLogin: number = this.userService.getUserId();
 
 
   constructor(private userService: UserService,
@@ -40,12 +38,4 @@ export class TransactionComponent implements OnInit {
       this.contactData = response;
     })
   }
-
-
-
-  /*pay
-  * generer nouvelle transaction
-  * ajouter montant à nouvelle transaction
-  * reset contact
-  * reset montant*/
 }
