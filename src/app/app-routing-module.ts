@@ -2,15 +2,18 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {AuthenticationComponent} from "./authentication/authentication.component";
 import {MenuComponent} from "./menu/menu.component";
-import {SubscriptionComponent} from "./subscription/subscription.component";
+import {TransactionComponent} from "./transaction/transaction.component";
 
 
 
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
-  { path:'home', component: MenuComponent },
-  { path:'subscription', component: SubscriptionComponent }
+  { path:'Home', component: MenuComponent },
+  { path:'Transfer', component: TransactionComponent},
+  { path:'Profile', component: MenuComponent },
+  { path:'Contact', component: MenuComponent },
+  { path:'LogOff', component: MenuComponent }
 ];
 
 @NgModule({
@@ -21,4 +24,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule{ }
+export class AppRoutingModule{}
+

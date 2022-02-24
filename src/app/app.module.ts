@@ -7,8 +7,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthenticationComponent} from "./authentication/authentication.component";
 import {AppRoutingModule} from "./app-routing-module";
 import {MenuComponent} from "./menu/menu.component";
-import { SubscriptionComponent } from './subscription/subscription.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { TransactionComponent } from './transaction/transaction.component';
+
+
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -17,13 +20,18 @@ import {ReactiveFormsModule} from "@angular/forms";
     AuthenticationComponent,
     MenuComponent,
     TestComponentComponent,
-    SubscriptionComponent
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+
+    MatTableModule,
+
+    MatTableModule,
+    MatPaginatorModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
