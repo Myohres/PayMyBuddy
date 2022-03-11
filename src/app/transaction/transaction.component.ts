@@ -34,8 +34,8 @@ export class TransactionComponent implements OnInit {
     }
 
   getContacts() {
-    this.contactService.getContactByUserId(this.userLogin).subscribe(response => {
-      this.contactData = response;
+    this.userService.getUserById(this.userLogin).subscribe(response => {
+      this.contactData = response.contactList;
     })
   }
 }
