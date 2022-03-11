@@ -39,6 +39,7 @@ export class AuthenticationComponent implements OnInit {
             this.userService.setUserId(data.id);
             this.userService.setUserLastName(data.lastName);
             this.userService.setUserFirstName(data.firstName);
+            this.userService.setContactList(data.contactList);
             this.router.navigate(['/Transfer']);
           } else
             this.message = "email or Password wrong";
