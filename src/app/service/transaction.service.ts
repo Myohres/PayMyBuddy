@@ -24,4 +24,7 @@ export class TransactionService {
     return this.http.get<Transaction[]>(`${this.rootURL}/${id}`)
   }
 
+  public addTransaction(transaction: Transaction) {
+    return this.http.post(this.rootURL, transaction)
+  }
 }
