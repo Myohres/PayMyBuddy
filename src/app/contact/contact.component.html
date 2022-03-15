@@ -1,6 +1,7 @@
 <app-menu></app-menu>
 
 <div class="d-flex justify-content-around">
+  <p *ngIf="isError">Une erreur s'est produite</p>
   <form class="form-inline">
     <div class="form-group mb-2">
       <input [formControl]="contactId" class="form-control" placeholder="Contact id">

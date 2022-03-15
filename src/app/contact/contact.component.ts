@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit {
   public contactData: Contact[] = [];
   public userLogin: number = 0;
   public contactId = new FormControl();
+  public isError: boolean = false;
 
   constructor(private userService: UserService) { }
 
@@ -29,8 +30,15 @@ export class ContactComponent implements OnInit {
           console.log(data)
           this.userService.addContact(this.userLogin, data)
             .subscribe({
-              next: value => console.log("add contact : " + data.id),
-              error: err => console.error("add contact error : " +err),
+              next: value => {
+                console.log("add contact : " + data.id);
+                this.isError = false;
+                this.getContact();
+              },
+              error: err => {
+                this.isError = true;
+                console.error("add contact error : ", err)
+              },
               complete: () => console.log("contact added")
             })
         },
@@ -45,8 +53,15 @@ export class ContactComponent implements OnInit {
   deleteContact(){
     this.userService.deleteContact(this.userLogin, this.contactId.value)
       .subscribe({
-        next: value => console.log("delete contact id : " + this.contactId.value),
-        error: err => console.error("delete contact error : " +err),
+        next: value => {
+          console.log("delete contact id : " + this.contactId.value);
+          this.isError = false;
+          this.getContact();
+        },
+        error: err => {
+          this.isError = true;
+          console.error("delete contact error : " +err)
+        },
         complete: () => {
           this.contactId.reset()
           console.log("contact deleted si Youssef valide")

@@ -3,6 +3,7 @@ import {User} from "../model/user";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Contact} from "../model/contact";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -14,13 +15,14 @@ export class UserService {
 
 
   private rootURL: string = "http://localhost:8080/users";
+  private userData: User | null = null;
   private userId: number = 1;
   private userLastName: string = "";
   private userFirstName: string = "";
   private contactList: Contact[] = [];
 
 
-  constructor( private http: HttpClient){
+  constructor( private http: HttpClient, private router: Router){
   }
 
   public getAllUsers(): Observable<User[]> {
@@ -75,11 +77,13 @@ export class UserService {
   }
 
   getUserLastName(): string {
+    console.log("DEMANDE DE LAST NAME", this.userLastName)
     return this.userLastName;
   }
 
   setUserLastName(value: string) {
     this.userLastName = value;
+    console.log("CHANGEMENT DE LAST NAME", this.userLastName)
   }
 
   getUserFirstName(): string {
@@ -96,5 +100,26 @@ export class UserService {
 
   setContactList(value: Contact[]) {
     this.contactList = value;
+  }
+
+  login(email: string, password: string): void {
+    this.http.post<User>(`${this.rootURL}/login`, {login:email, password:password}).subscribe({
+      next: user => {
+        this.userData = user;
+        this.userId = this.userData.id;
+        this.userFirstName = this.userData.firstName;
+        this.userLastName = this.userData.lastName;
+        this.contactList = this.userData.contactList;
+        this.router.navigate(['Transfer']);
+      },
+      error: err => {
+        console.log("Error auth", err);
+      }
+    });
+  }
+
+  logout(): void {
+    this.userData = null;
+    this.router.navigate(['Authentication']);
   }
 }
