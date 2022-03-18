@@ -30,25 +30,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   authentication(email: string, password: string) {
-    this.userService.getUserByEmail(email)
-      .subscribe(
-        data => {
-          console.log("data : ", data);
-          console.log("password : ", password);
-          if (data.password == password){
-            this.userService.setUserId(data.id);
-            this.userService.setUserLastName(data.lastName);
-            this.userService.setUserFirstName(data.firstName);
-            this.router.navigate(['/Transfer']);
-          } else
-            this.message = "email or Password wrong";
-          this.login = '';
-          this.password = '';
-        },
-        error => {
-          this.message = "email or Password wrong";
-        }
-      );
+    this.userService.login(email, password);
   }
 }
 

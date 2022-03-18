@@ -12,6 +12,8 @@ import { TransactionComponent } from './transaction/transaction.component';
 
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { ContactComponent } from './contact/contact.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -20,13 +22,14 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     AuthenticationComponent,
     MenuComponent,
     TestComponentComponent,
-    TransactionComponent
+    TransactionComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-
+ReactiveFormsModule,
     MatTableModule,
 
     MatTableModule,

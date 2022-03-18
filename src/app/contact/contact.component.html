@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+
+<div class="d-flex justify-content-around">
+  <p *ngIf="isError">Une erreur s'est produite</p>
+  <form class="form-inline">
+    <div class="form-group mb-2">
+      <input [formControl]="contactId" class="form-control" placeholder="Contact id">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <button (click)="addContact()" type="button" class="btn btn-primary mb-2">Add contact</button>
+    </div>
+    <div class="form-group mb-2">
+      <button (click)="deleteContact()" type="button" class="btn btn-primary mb-2">Delete contact</button>
+    </div>
+  </form>
+</div>
+<div class="d-flex justify-content-around">
+  <div class="p-2">
+    <p>My Contacts</p>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">LastName</th>
+        <th scope="col">FirstName</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let contact of contactData">
+        <th scope="row">{{contact.id }}</th>
+        <td>{{ contact.lastName }}</td>
+        <td>{{ contact.firstName }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
