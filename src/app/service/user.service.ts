@@ -68,10 +68,6 @@ export class UserService {
     return this.http.delete(this.rootURL+"/"+userId+"/contact/"+contactId)
   }
 
-  public getUserById(userId: number): Observable<User> {
-    return this.http.get<User>(this.rootURL+"id/"+userId);
-  }
-
   getUserId() {
     return this.userId;
   }

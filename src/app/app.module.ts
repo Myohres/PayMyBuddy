@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {TestComponentComponent} from "../test-component/test-component.component";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthenticationComponent} from "./authentication/authentication.component";
 import {AppRoutingModule} from "./app-routing-module";
@@ -21,7 +20,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     AppComponent,
     AuthenticationComponent,
     MenuComponent,
-    TestComponentComponent,
     TransactionComponent,
     ContactComponent,
   ],
@@ -29,7 +27,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-ReactiveFormsModule,
+    ReactiveFormsModule,
     MatTableModule,
 
     MatTableModule,

@@ -17,9 +17,8 @@ export class TransactionComponent implements OnInit {
   public userLogin: number = this.userService.getUserId();
 
 
-  constructor(private transaction: Transaction,
-              private userService: UserService,
-              private transactionService: TransactionService,) { }
+  constructor(private userService: UserService,
+              private transactionService: TransactionService) { }
 
   ngOnInit(): void {
     this.getTransactions();
@@ -38,12 +37,12 @@ export class TransactionComponent implements OnInit {
     })
   }
 
-  sendMoney() {
+  sendMoney(transaction: Transaction) {
     this.userService.getUserById(this.userLogin)
-      .subscribe( response => { this.transaction.sender = response}
+      .subscribe( response => { transaction.sender = response}
       )
 
-    this.transactionService.addTransaction(this.transaction)
+    this.transactionService.addTransaction(transaction)
       .subscribe({
         next: value => console.log("add transaction"),
         error: err => console.log("add transaction error"),
