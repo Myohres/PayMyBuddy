@@ -22,9 +22,6 @@ export class TransactionComponent implements OnInit {
   public amount  = new FormControl();
   public description  = new FormControl();
   public selectedValue: string = "";
-  public contactIdSelected: number = 0;
-
-
 
   transaction: Transaction = {
     id:0,
@@ -69,23 +66,20 @@ export class TransactionComponent implements OnInit {
   }
 
   payment() {
-   this.contactIdSelected = Number(this.selectedValue);
     this.transaction.sender.id = this.userLogin;
     this.transaction.amount = this.amount.value;
     this.transaction.description = this.description.value;
-    this.transaction.recipient.id = this.contactIdSelected;
+    this.transaction.recipient.id = Number(this.selectedValue)
     this.transactionService.addTransaction(this.transaction)
       .subscribe({
         next: value => {
           console.log("add transation")
           this.getTransactions();
-
         },
         error: err => console.log("add transaction error : ", err),
         complete: () => console.log("transaction done")
       })
     this.amount.reset();
     this.description.reset();
-
   }
 }
