@@ -1,5 +1,9 @@
 <app-menu></app-menu>
 
+<form>
+  <p>transaction recipient id : {{transaction.recipient.id}} </p>
+  <p>selectedValue : {{selectedValue}}</p>
+  <p>contactidSelected : {{contactIdSelected}}</p>
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-column">
     <div class="p-2">
@@ -10,19 +14,22 @@
         </p>
       </div>
       <div class="d-flex justify-content-around">
-        <select class="custom-select" id="inputGroupSelect01">
+        <select [(ngModel)]="selectedValue" class="custom-select" id="inputGroupSelect01" name="contact">
           <option selected>Select Contact</option>
-          <option *ngFor="let contact of contactData" >{{contact.lastName}} {{contact.firstName}}</option>
+          <option *ngFor="let contact of contactData" [value]="contact.id">
+            {{contact.lastName}} {{contact.firstName}}
+          </option>
         </select>
-        <input type="text" class="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1">
+        <input [formControl]="amount" type="number" class="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1">
+        <input [formControl]="description" type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1">
         <div>
-          <button type="button" class="btn btn-success btn-sm">Pay</button>
+          <button (click)="payment()" type="button" class="btn btn-success btn-sm">Pay</button>
         </div>
       </div>
     </div>
 
     <div class="p-2">
-      <p>My transaction</p>
+      <p>My transactions</p>
       <table class="table table-striped">
         <thead>
         <tr>
@@ -46,3 +53,6 @@
   </div>
 
 </div>
+
+
+</form>

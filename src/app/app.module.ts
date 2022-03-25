@@ -7,12 +7,12 @@ import {AuthenticationComponent} from "./authentication/authentication.component
 import {AppRoutingModule} from "./app-routing-module";
 import {MenuComponent} from "./menu/menu.component";
 import { TransactionComponent } from './transaction/transaction.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { ContactComponent } from './contact/contact.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,8 +29,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     AppRoutingModule,
     ReactiveFormsModule,
     MatTableModule,
-
+    MatSelectModule,
     MatTableModule,
+    FormsModule,
     MatPaginatorModule
 
   ],

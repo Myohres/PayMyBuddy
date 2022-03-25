@@ -10,7 +10,9 @@ import {Transaction} from "../model/transaction";
 export class TransactionService {
 
 
+
   private rootURL: string = "http://localhost:8080/transactions";
+  private rootURLPayment: string = "http://localhost:8080/payment/";
 
 
   constructor(private http: HttpClient) {
@@ -25,6 +27,8 @@ export class TransactionService {
   }
 
   public addTransaction(transaction: Transaction) {
-    return this.http.post(this.rootURL, transaction)
+    return this.http.post(this.rootURLPayment, transaction)
   }
+
+
 }
