@@ -1,4 +1,5 @@
 import {Contact} from "./contact";
+import {Bank} from "./bank";
 
 export interface User {
   id: number;
@@ -6,5 +7,7 @@ export interface User {
   password: string;
   firstName: string;
   lastName: string;
+  amount: number;
   contactList: Contact[];
+  bankList: Bank[];
 }

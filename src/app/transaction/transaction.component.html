@@ -4,14 +4,15 @@
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-column">
     <div class="p-2">
+      <p>Account amount : {{userAmount}} €</p>
       <div class="d-flex">
-        <p class="mr-auto p-2">Send Money</p>
+        <p class="mr-auto p-2">Transfer to contact</p>
         <p class="p-2">
           <a routerLink="/Contact"> <button type="button" class="btn btn-primary btn-sm">Add contact</button></a>
         </p>
       </div>
       <div class="d-flex justify-content-around">
-        <select [(ngModel)]="selectedValue" class="custom-select" id="inputGroupSelect01" name="contact">
+        <select [(ngModel)]="ContactSelectedValue" class="custom-select" id="contactTransferGroup" name="contact">
           <option selected>Select Contact</option>
           <option *ngFor="let contact of contactData" [value]="contact.id">
             {{contact.lastName}} {{contact.firstName}}
@@ -20,13 +21,52 @@
         <input [formControl]="amount" type="number" class="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1">
         <input [formControl]="description" type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1">
         <div>
-          <button (click)="payment()" type="button" class="btn btn-success btn-sm">Pay</button>
+          <button (click)="intPayment()" type="button" class="btn btn-success btn-sm">Pay</button>
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <div class="d-flex">
+        <p class="mr-auto p-2">Transfer to Bank</p>
+        <p class="p-2">
+          <a routerLink="/bank"> <button type="button" class="btn btn-primary btn-sm">Add bank</button></a>
+        </p>
+      </div>
+      <div class="d-flex justify-content-around">
+        <select [(ngModel)]="toBankSelectedValue" class="custom-select" id="toBankTransferGroup" name="bank">
+          <option selected>Select Bank</option>
+          <option *ngFor="let bank of bankData" [value]="bank.id">
+            {{bank.name}} {{bank.accountNumber}}
+          </option>
+        </select>
+        <input [formControl]="toBankAmount" type="number" class="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1">
+        <input [formControl]="toBankDescription" type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1">
+        <div>
+          <button (click)="extPaymentToBank()" type="button" class="btn btn-success btn-sm">Pay</button>
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <div class="d-flex">
+        <p class="mr-auto p-2">Transfer from Bank</p>
+      </div>
+      <div class="d-flex justify-content-around">
+        <select [(ngModel)]="fromBankSelectedValue" class="custom-select" id="fromBankTransferGroup" name="bank">
+          <option selected>Select Bank</option>
+          <option *ngFor="let bank of bankData" [value]="bank.id">
+            {{bank.name}} {{bank.accountNumber}}
+          </option>
+        </select>
+        <input [formControl]="fromBankAmount" type="number" class="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1">
+        <input [formControl]="fromBankDescription" type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1">
+        <div>
+          <button (click)="extPaymentToUser()" type="button" class="btn btn-success btn-sm">Pay</button>
         </div>
       </div>
     </div>
 
     <div class="p-2">
-      <p>My transactions</p>
+      <p>My transactions : Contact</p>
       <table class="table table-striped">
         <thead>
         <tr>
@@ -37,9 +77,30 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let transaction of transactionData">
+        <tr *ngFor="let transaction of intTransactionData">
           <th scope="row">{{ transaction.id }}</th>
           <td>{{ transaction.recipient.firstName }}</td>
+          <td>{{ transaction.description }}</td>
+          <td>{{ transaction.amount }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-2">
+      <p>My transactions : Bank</p>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Bank</th>
+          <th scope="col">Description</th>
+          <th scope="col">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let transaction of extTransactionData">
+          <th scope="row">{{ transaction.id }}</th>
+          <td>{{ transaction.bank.accountNumber }}</td>
           <td>{{ transaction.description }}</td>
           <td>{{ transaction.amount }}</td>
         </tr>

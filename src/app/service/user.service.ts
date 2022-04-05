@@ -16,7 +16,8 @@ export class UserService {
 
   private rootURL: string = "http://localhost:8080/users";
   private userData: User | null = null;
-  private userId: number = 1;
+  private userId: number = 0;
+  private userAmount = 0;
   private userLastName: string = "";
   private userFirstName: string = "";
   private contactList: Contact[] = [];
@@ -92,6 +93,14 @@ export class UserService {
 
   setUserFirstName(value: string) {
     this.userFirstName = value;
+  }
+
+  getAmountUser(): number {
+    return this.userAmount;
+  }
+
+  setAmountUser(amount: number) {
+    this.userAmount = amount;
   }
 
   getContactList(): Contact[] {

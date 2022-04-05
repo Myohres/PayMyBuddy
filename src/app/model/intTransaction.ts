@@ -1,6 +1,6 @@
 import {User} from "./user";
 
-export interface Transaction {
+export interface IntTransaction {
   id: number;
   sender: User;
   recipient: User;
